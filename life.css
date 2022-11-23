@@ -1,0 +1,70 @@
+body {
+    background-color: black;
+    color: gray;
+    padding: 0px;
+}
+.container {
+    background-color: #202020;
+    border: #404040 1px solid;
+    padding: 4px;
+    width: 75%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+}
+.form {
+    background-color: #202020;
+    border: #404040 1px solid;
+    font-size: 12px;
+    margin: 4px;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+}
+.formContainer {
+    margin: 4px;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    position: relative;
+}
+input, button {
+    background-color: #606060;
+    color: black;
+    border: #404040 1px solid;
+    border-radius: 5px;
+    width: 75px;
+    position: relative;
+}
+#field {
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+    background-color: #202020;
+    border: #404040 1px solid;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+.dead {
+    background-color: #202020;
+}
+.alive {
+    background-color: #606060;
+}
+tr, td {
+    height: 5px;
+    width: 5px;
+    margin: 0px;
+    padding: 0px;
+}
