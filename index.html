@@ -3,143 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>IT IS ALIVE!</title>
-<style>
-    body {
-        background-color: black;
-        color: gray;
-        padding: 5px;
-        font-family: monospace;
-    }
-    #content {
-        display: grid;
-        gap: 10px;
-        border: 1px solid #505050;
-        display: grid;
-        width: 80%;
-        grid-template-areas:
-            'head head head head head head head head head head head'
-            'menu main main main main main main main logs logs logs';
-        gap: 10px;
-        padding: 10px; 
-        box-sizing: border-box;
-        margin: 0 auto;
-    }
-    #head {
-        border: 1px solid #505050;
-        border-radius: 5px;
-        margin-bottom: 5px;
-        grid-area: head;
-        text-align: center;
-        box-sizing: border-box;
-        height: fit-content;
-        text-align: center;
-        align-content: center;
-    }
-    h1 {
-        font-family: monospace;
-        font-weight: 500px;
-        letter-spacing: 0.2em;
-        word-spacing: 0.5em;
-        margin: auto auto;
-        padding: 15px 0px; 
-        text-transform: capitalize;
-        color: #32330e;
-    }
-    #left-nav {
-        border: 1px solid #505050;
-        border-radius: 5px;
-        padding: 5px;
-        grid-area: menu;
-        height: fit-content;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        box-sizing: border-box;
-    }
-    #field-block {
-        border: 1px solid #505050;
-        border-radius: 5px;
-        padding: 5px;
-        grid-area: main;
-        height: 100%;
-        box-sizing: border-box;
-    }
-    #log-block {
-        border: 1px solid #505050;
-        border-radius: 5px;
-        padding: 5px;
-        grid-area: logs;
-        height: fit-content;
-        box-sizing: border-box;
-    }
-    .content-columns {
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        overflow: visible;
-    }
-    input, button {
-        background-color: #606060;
-        color: black;
-        border: #404040 1px solid;
-        border-radius: 5px;
-        width: 75px;
-        text-align: center;
-    }
-    input:focus {
-        outline: none !important;
-        border: 1px solid #32330e;
-    }
-    .nav-sect {
-        margin-bottom: 5px;
-        align-items: right;
-        justify-content: right;
-        text-align: right;
-    }
-    .nav-title {
-        margin-bottom: 5px;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: larger;
-        font-weight: bold;
-        color: #32330e;
-        background-color: #606060;
-        border-radius: 5px 5px 0px 0px;
-    }
-    #field {
-        left: 50%;
-        margin-right: -50%;
-        top: 50%;
-        margin-bottom: -50%;
-        transform: translate(-50%, -50%);
-        background-color: #202020;
-        border: #404040 1px solid;
-        margin: 0px;
-        padding: 0px;
-        position: relative;
-    }
-    .dead {
-        background-color: #202020;
-    }
-    .alive {
-        background-color: #606060;
-    }
-    table {
-        margin: 0px;
-        padding: 0px;
-        border-collapse: collapse;
-    }
-    tr, td {
-        border: 1px solid #191919;
-        height: 5px;
-        width: 5px;
-        margin: 0px;
-        padding: 0px;
-    }
-</style>
-<script src="osc.js"></script>
-
+<link rel="stylesheet" href="./life.css">
+<script src="./osc.js"></script>
 </head>
 <body>
 
@@ -164,10 +29,10 @@
             Stop Evolution | <button name="stop" id="stop-life" value="Stop Life">Stop Evo</button><br>
             Clear Life Field | <button name="Clear" id="clear" value="Clear">Clear Field</button>
     </section>
-    <section class="nav-sect">
+<!--  DEPRECATED <section class="nav-sect">
         <section class="nav-title">Presets: </section>
             Blinker | <button  name="GenerateB" id="genBlinker" value="GenerateB" onclick="generateBlinker()">Blinker</button>
-    </section>
+    </section>  -->
 
 </div>
 <div id="field-block" class="content-columns">
@@ -177,13 +42,13 @@
 <div id="log-block" class="content-columns">
     <section class="nav-sect">
         <section class="nav-title">Dashboard: </section>
-    Generation #: <span id="gen-counter">0000</span><br>
-    Deaths: <span id="death-counter">0000</span><br>
-    Survived: <span id="surv-counter">0000</span><br>
-    Ressurected: <span id="birth-counter">0000</span><br>
+            Generation #: <span id="gen-counter">0</span><br>
+            Deaths: <span id="death-counter">0</span><br>
+            Survived: <span id="surv-counter">0</span><br>
+            Ressurected: <span id="birth-counter">0</span><br>
     </section>
 </div>
 </div>
 
-<script src="life.js"></script>
+<script src="./life.js"></script>
 </body></html>
