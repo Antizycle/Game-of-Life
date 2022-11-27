@@ -17,7 +17,7 @@ const elCycle = document.getElementById('cycle');
 const elStart = document.getElementById('start');
 const elStopLife = document.getElementById('stop-life');
 const elClear = document.getElementById('clear');
-const elGenBlinker = document.getElementById('genBlinker');
+// const elGenBlinker = document.getElementById('genBlinker');
 const elGenCounter = document.getElementById('gen-counter');
 const elDeathCounter = document.getElementById('death-counter');
 const elSurvCounter = document.getElementById('surv-counter');
@@ -31,7 +31,7 @@ elCycle.addEventListener('click', oneCycle);
 elStart.addEventListener('click', startLife);
 elStopLife.addEventListener('click', stopLife);
 elClear.addEventListener('click', clearField);
-elGenBlinker.addEventListener('click', generateBlinker);
+// elGenBlinker.addEventListener('click', generateBlinker);
 
 //get X and Y from input field, if checking fails - set to defualt values
     function getSize()
