@@ -9,45 +9,47 @@
 <body>
 
 <div id="content">
-<div id="head">
-    <h1>Game of Life r02, now redesigned!</h1>
-</div>
+    <div id="head-wrapper">
+        <h1>Game of Life r02, now without cssGrid!</h1>
+    </div>
 
-<div id="left-nav" class="content-columns">
-    <section class="nav-sect">
-        <section class="nav-title">Variables: </section>
-            Width (in range of 10 to 99) | <input type="text" name="sizeX" id="sizeX" maxlength="2" value="30" alt="Default value 10"><br>
-            Height (in range of 10 to 99) | <input type="text" name="sizeY" id="sizeY" maxlength="2" value="30"><br>
-            Initial Population (85-99%) | <input type="text" name="randP" id="randP" maxlength="2" value="85"><br>
-            Evolution speed (40-2000 ms) | <input type="text" name="evolS" id="evolS" maxlength="4" value="1000"><br>
-        </section>
-    <section class="nav-sect">
-        <section class="nav-title">Buttons: </section>
-            Generate Life Field using input values | <button name="Generate" id="genField" value="Generate">Generate</button><br>
-            One Evolution Cycle | <button name="cycle" id="cycle" value="One Cycle">1 EvoCycle</button><br>
-            Start Evolution (affected by speed value) | <button name="startL" id="start" value="Start Life">Start Evo</button><br>
-            Stop Evolution | <button name="stop" id="stop-life" value="Stop Life">Stop Evo</button><br>
-            Clear Life Field | <button name="Clear" id="clear" value="Clear">Clear Field</button>
-    </section>
-<!--  DEPRECATED <section class="nav-sect">
-        <section class="nav-title">Presets: </section>
-            Blinker | <button  name="GenerateB" id="genBlinker" value="GenerateB" onclick="generateBlinker()">Blinker</button>
-    </section>  -->
+    <div id="content-wrapper">
+        <div id="left-nav" class="content-columns">
+            <section class="nav-sect">
+                <section class="nav-title">Variables: </section>
+                    Width | <input type="text" name="sizeX" id="sizeX" maxlength="2" value="30" title="Default value is 10, range 10-99"><br>
+                    Height | <input type="text" name="sizeY" id="sizeY" maxlength="2" value="30" title="Default value is 10, range 10-99"><br>
+                    Initial Population | <input type="text" name="randP" id="randP" maxlength="2" value="85" title="Default value is 90, range 85-99. Input 0 for a blank field"><br>
+                    Evolution speed | <input type="text" name="evolS" id="evolS" maxlength="4" value="1000" title="(40-2000 ms)"><br>
+                </section>
+            <section class="nav-sect">
+                <section class="nav-title">Buttons: </section>
+                    Generate Life Field | <button name="Generate" id="genField" value="Generate" title="With input values x, y, intial pop">Generate</button><br>
+                    One Evolution Cycle | <button name="cycle" id="cycle" value="One Cycle">1 EvoCycle</button><br>
+                    Start Evolution  | <button name="startL" id="start" value="Start Life" title="affected by speed value">Start Evo</button><br>
+                    Stop Evolution | <button name="stop" id="stop-life" value="Stop Life">Stop Evo</button><br>
+                    Clear Life Field | <button name="Clear" id="clear" value="Clear">Clear Field</button>
+            </section>
+        <!--  DEPRECATED <section class="nav-sect">
+                <section class="nav-title">Presets: </section>
+                    Blinker | <button  name="GenerateB" id="genBlinker" value="GenerateB" onclick="generateBlinker()">Blinker</button>
+            </section>  -->
 
-</div>
-<div id="field-block" class="content-columns">
-    <table class="field" id="field">
-    </table>
-</div>
-<div id="log-block" class="content-columns">
-    <section class="nav-sect">
-        <section class="nav-title">Dashboard: </section>
-            Generation #: <span id="gen-counter">0</span><br>
-            Deaths: <span id="death-counter">0</span><br>
-            Survived: <span id="surv-counter">0</span><br>
-            Ressurected: <span id="birth-counter">0</span><br>
-    </section>
-</div>
+        </div>
+        <div id="field-block" class="content-columns">
+            <table class="field" id="field">
+            </table>
+        </div>
+        <div id="log-block" class="content-columns">
+            <section class="nav-sect">
+                <section class="nav-title">Dashboard: </section>
+                    Generation #: <span id="gen-counter">0</span><br>
+                    Deaths: <span id="death-counter">0</span><br>
+                    Survived: <span id="surv-counter">0</span><br>
+                    Ressurected: <span id="birth-counter">0</span><br>
+            </section>
+        </div>
+    </div>
 </div>
 
 <script src="./life.js"></script>
