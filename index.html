@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<div id="content">
-    <div id="head-wrapper">
+<div class="content">
+    <header class="content__head">
         <h1>Game of Life r02, now without cssGrid!</h1>
-    </div>
+    </header>
 
-    <div id="content-wrapper">
-        <div id="left-nav" class="content-columns">
+    <div class="content__body">
+        <div class="body__nav columns">
             <section class="nav-sect">
                 <section class="nav-title">Variables: </section>
                     Width | <input type="text" name="sizeX" id="sizeX" maxlength="2" value="30" title="Default value is 10, range 10-99"><br>
@@ -36,11 +36,11 @@
             </section>  -->
 
         </div>
-        <div id="field-block" class="content-columns">
+        <div class="body__field columns">
             <table class="field" id="field">
             </table>
         </div>
-        <div id="log-block" class="content-columns">
+        <div class="body__log columns">
             <section class="nav-sect">
                 <section class="nav-title">Dashboard: </section>
                     Generation #: <span id="gen-counter">0</span><br>

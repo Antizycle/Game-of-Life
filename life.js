@@ -1,5 +1,5 @@
 
-let CycleInterval;
+let CycleInterval = "";
 let genCounter = 0;
 let field = {
     defaultSize: 10,
@@ -42,12 +42,12 @@ elClear.addEventListener('click', clearField);
         field.y = parseInt(field.y) ?  parseInt(field.y) : field.defaultSize;
         if (field.x<10 || field.x>99) field.x = field.defaultSize; // if size out of range, setting it to 10x10
         if (field.y<10 || field.y>99) field.y = field.defaultSize;
-        return x = field.x, y = field.y;
+        return [field.x, field.y]; 
     }
 
     function generateField() // field generation with input values (size and live percentage)
     {
-        getSize();
+        [x, y] = getSize();  // destructuring function return into x and y
 
         genCounter = 0; // counter reset
         elGenCounter.textContent = genCounter;
@@ -134,7 +134,7 @@ elClear.addEventListener('click', clearField);
     function seedRandomizer()
     {
         field.randP = O('randP').value;
-        if (field.randP == 0) return 'dead'; // if 0 - generate blank field
+        if (field.randP === 0) return 'dead'; // if 0 - generate blank field
 
         parseInt(field.randP) ? field.randP = parseInt(field.randP) : field.randP = 90;
         if (field.randP<84 || field.randP>99) field.randP = 90;
@@ -163,9 +163,9 @@ elClear.addEventListener('click', clearField);
                 // a (j-1) / i (i  ) | j (j  ) / i (i  ) | b (j+1) / i (i  )
                 // a       / d (i+1) | j       / d       | b       / d
 
-                let a = j-1; let b = j+1; let c = i-1; let d = i+1; //shortcuts
-                if (i == 0) c = y-1; if (i == y-1) d = 0; //if border cells we go to other side of the field
-                if (j == 0) a = x-1; if (j == x-1) b = 0;
+                let a = j-1, b = j+1, c = i-1, d = i+1; //shortcuts
+                if (i === 0) c = y-1; if (i === y-1) d = 0; //if border cells we go to other side of the field
+                if (j === 0) a = x-1; if (j === x-1) b = 0;
                 // console.log("i: " + i + " j: " + j + " a: " + a + " b: " + b + " c: " + c + " d: " + d);
                 let CellNeighbours = [];
                 let ID = (j+1).toString().padStart(2, 0) + (i+1).toString().padStart(2, 0); //determining cell ID
@@ -183,12 +183,12 @@ elClear.addEventListener('click', clearField);
 
                 for (k=0; k<8; k++)
                 {
-                    if (CellNeighbours[k] == 'alive') aliveCounter++; //checking and counting alive neighbours
+                    if (CellNeighbours[k] === 'alive') aliveCounter++; //checking and counting alive neighbours
                     if (aliveCounter>3) break; // no point count further so we break
                 }
 
                 //applying rules. If alive and <2 and >3 - dead. If 2 or 3 and alive - lives. If 3 and dead - alive
-                if (curStatus == 'alive')
+                if (curStatus === 'alive')
                 {
                     if (aliveCounter < 2 || aliveCounter > 3)
                     {
@@ -201,7 +201,7 @@ elClear.addEventListener('click', clearField);
                        survCounter++;
                     }
                 }
-                else if (curStatus == 'dead' && aliveCounter == 3)
+                else if (curStatus === 'dead' && aliveCounter === 3)
                 {
                     O(ID).className = 'alive';
                     fieldArrayClone[i][j] = 'alive';
@@ -231,7 +231,7 @@ elClear.addEventListener('click', clearField);
         y = parseInt(y)-1;
 
         // console.log(this.id + ", x: " + x + ", y: " + y + ", status: " + cellStatus);
-        if (cellStatus == 'dead') // if dead/alive, set to alive/dead: change cell class and modify field.array
+        if (cellStatus === 'dead') // if dead/alive, set to alive/dead: change cell class and modify field.array
         {
             // console.log(field.array[y][x] + " before changing");
             this.className = 'alive';
@@ -239,7 +239,7 @@ elClear.addEventListener('click', clearField);
             // console.log(field.array[y][x] + " after changing");
             // console.log("Changed to Alive!")
         }
-        else if (cellStatus == 'alive')
+        else if (cellStatus === 'alive')
         {
             this.className = 'dead';
             field.array[y][x] = 'dead';

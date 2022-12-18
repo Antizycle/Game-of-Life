@@ -9,11 +9,11 @@
 
 body {
     background-color: var(--bg);
-    color: gray;
+    color: var(--gray);
     padding: 5px;
     font-family: monospace;
 }
-#content {
+.content {
     display: block;
     background-color: var(--bg);
     border: 1px solid var(--border);
@@ -22,7 +22,7 @@ body {
     box-sizing: border-box;
     margin: 0 auto;
 }
-#head-wrapper {
+.content__head {
     border: 1px solid var(--border);
     border-radius: 5px;
     margin-bottom: 5px;
@@ -33,23 +33,22 @@ body {
     align-content: center;
 }
 h1 {
-    font-family: monospace;
     font-weight: 500px;
     letter-spacing: 0.2em;
     word-spacing: 0.5em;
     margin: auto auto;
     padding: 15px 0px; 
     text-transform: capitalize;
-    color: #32330e;
+    color: var(--gold);
 }
-#content-wrapper {
+.content__body {
     display: flex;
     height: fit-content;
     flex-wrap: nowrap;
     margin: 0 auto;
     align-content: space-between;
 }
-#left-nav {
+.body__nav {
     border: 1px solid var(--border);
     border-radius: 5px;
     padding: 5px;
@@ -60,7 +59,7 @@ h1 {
     text-align: center;
     box-sizing: border-box;
 }
-#field-block {
+.body__field {
     border: 1px solid var(--border);
     border-radius: 5px;
     padding: 5px;
@@ -71,7 +70,7 @@ h1 {
     box-sizing: border-box;
     align-content: center;
 }
-#log-block {
+.body__log {
     border: 1px solid var(--border);
     border-radius: 5px;
     padding: 5px;
@@ -79,7 +78,7 @@ h1 {
     width: 240px;
     box-sizing: border-box;
 }
-.content-columns {
+.columns {
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -116,7 +115,7 @@ button:active {
     justify-content: right;
     text-align: right;
 }
-#log-block > .nav-sect {
+.body__log > .nav-sect {
     align-items: left;
     justify-content: left;
     text-align: left;
