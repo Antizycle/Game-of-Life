@@ -1,158 +1,133 @@
 :root {
-    --gold: #32330e;
+    --gold: rgb(104, 76, 5);
     --gray: #505050;
     --black: #000000;
-    --lighter-gold: #76791c;
-    --border: var(--gold);
+    --lighter-gold: rgb(153, 112, 9);
+    --border: var(--lighter-gold);
     --bg: var(--black);
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--gray);
+    background-color: black;
+    color: chocolate;
     padding: 5px;
     font-family: monospace;
+    justify-content: center;
 }
+
 .content {
-    display: block;
-    background-color: var(--bg);
-    border: 1px solid var(--border);
-    width: 1200px;
-    padding: 10px; 
-    box-sizing: border-box;
-    margin: 0 auto;
-}
-.content__head {
     border: 1px solid var(--border);
     border-radius: 5px;
-    margin-bottom: 5px;
-    text-align: center;
-    box-sizing: border-box;
-    height: fit-content;
-    text-align: center;
-    align-content: center;
-}
-h1 {
-    font-weight: 500px;
-    letter-spacing: 0.2em;
-    word-spacing: 0.5em;
-    margin: auto auto;
-    padding: 15px 0px; 
-    text-transform: capitalize;
-    color: var(--gold);
-}
-.content__body {
     display: flex;
-    height: fit-content;
-    flex-wrap: nowrap;
-    margin: 0 auto;
-    align-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+    margin: auto;
+    padding: 5px;
+    width: min(600px, 80%);
+    color: var(--border);
 }
-.body__nav {
+
+.content__header {
     border: 1px solid var(--border);
     border-radius: 5px;
-    padding: 5px;
-    height: fit-content;
-    width: 340px;
-    align-items: center;
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: center;
+    padding: 0;
+}
+
+.content__nav {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0;
+}
+
+.nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.nav__item {
+    flex-shrink: 1;
+    flex-grow: 0;
     justify-content: center;
     text-align: center;
-    box-sizing: border-box;
 }
-.body__field {
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 5px;
-    height: 100%;
-    min-height: 300px;
-    width: 590px;
-    margin: 0 10px;
-    box-sizing: border-box;
-    align-content: center;
+
+.nav__list--line::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 1px;
+    background-color: var(--border);
 }
-.body__log {
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 5px;
-    height: fit-content;
-    width: 240px;
-    box-sizing: border-box;
-}
-.columns {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: visible;
-}
-input {
-    background-color: var(--bg);
-    color: var(--gray);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    width: 75px;
-    text-align: center;
-}
-button {
-    background-color: #606060;
+
+input, button {
+    background-color: rgb(166, 146, 96);
     color: black;
-    border: #404040 1px solid;
+    border: 1px solid var(--border);
     border-radius: 5px;
     width: 75px;
     text-align: center;
 }
-input:focus {
+
+input:focus, button:focus {
     outline: none !important;
-    border: 1px solid var(--lighter-gold);
+    border: 1px solid rgb(104, 76, 5);
+    background-color: rgb(192, 178, 141);
 }
-button:active {
-    background-color: black;
-    color: var(--gray);
-    border: 1px solid var(--lighter-gold);
-}
-.nav-sect {
-    margin-bottom: 5px;
-    align-items: right;
-    justify-content: right;
-    text-align: right;
-}
-.body__log > .nav-sect {
-    align-items: left;
-    justify-content: left;
-    text-align: left;
-}
-.nav-title {
-    margin-bottom: 5px;
-    align-items: center;
+
+.content__field {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 5px 0;
+    height: fit-content;
     justify-content: center;
     text-align: center;
-    font-size: larger;
-    font-weight: bold;
-    color: var(--gold);
-    background-color: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 5px 5px 0px 0px;
 }
+
+.field__container {
+    display: block;
+}
+
+.content__footer {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0;
+    text-align: center;
+
+}
+
 #field {
-    margin: auto auto;
     background-color: #202020;
-    border: 1px solid var(--gray);
+    border: 1px solid var(--border);
     padding: 0px;
 }
+
 .dead {
     background-color: #202020;
 }
+
 .alive {
     background-color: #606060;
 }
+
 table {
     margin: 0px;
     padding: 0px;
     border-collapse: collapse;
 }
+
 tr, td {
     border: 1px solid #191919;
     height: 5px;
     width: 5px;
     margin: 0px;
     padding: 0px;
-}
+}  
