@@ -55,6 +55,7 @@ body {
 .nav__item {
     flex-shrink: 1;
     flex-grow: 0;
+    gap: 5px;
     justify-content: center;
     text-align: center;
 }
@@ -132,12 +133,17 @@ tr, td {
     padding: 0px;
 }  
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
     body {
         font-size: 24px;
     }
 
-    input, button {
+    input {
+        width: 150px;
+        font-size: 24px;
+    }
+
+    button {
         width: 120px;
         font-size: 24px;
     }
