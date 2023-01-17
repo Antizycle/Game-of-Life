@@ -10,6 +10,7 @@ let field = {
     array: [],
     aliveCells: 0
 }
+let isGenerated = 0;
 
 // DOM handlers
 const elGenField = document.getElementById('genField');
@@ -49,6 +50,7 @@ elClear.addEventListener('click', clearField);
     {
         [x, y] = getSize();  // destructuring function return into x and y
 
+        isGenerated = 1;
         genCounter = 0; // counter reset
         elGenCounter.textContent = genCounter;
         elDeathCounter.textContent = 0;
@@ -147,6 +149,11 @@ elClear.addEventListener('click', clearField);
 
     function oneCycle()
     {
+        if(isGenerated != 1)
+        {
+            generateField();
+        }
+
         x = field.x;
         y = field.y;
         let fieldArrayClone = field.array.map(item => item.slice()); // deep cloning the array (should work for 2d array). Checking in the orig array, changing in the clone
