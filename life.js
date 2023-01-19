@@ -1,9 +1,8 @@
-
 let CycleInterval = "";
 let genCounter = 0;
 let field = {
     defaultSize: 10,
-    defaultSpeed: 500,
+    defaultSpeed: 100,
     x: 10,
     y: 10,
     randP: 0.85,
@@ -18,12 +17,14 @@ const elCycle = document.getElementById('cycle');
 const elStart = document.getElementById('start');
 const elStopLife = document.getElementById('stop-life');
 const elClear = document.getElementById('clear');
-// const elGenBlinker = document.getElementById('genBlinker');
 const elGenCounter = document.getElementById('gen-counter');
 const elDeathCounter = document.getElementById('death-counter');
 const elSurvCounter = document.getElementById('surv-counter');
 const elBirthCounter = document.getElementById('birth-counter');
-
+const elHelp = document.getElementById('help');
+ const elHelpBtn = document.getElementById('header__help-btn');
+const elHelpCloseBtn = document.getElementById('help__close-btn');
+const elHelpClose = document.getElementById('help__close');
 
 
 // event listeners
@@ -32,12 +33,17 @@ elCycle.addEventListener('click', oneCycle);
 elStart.addEventListener('click', startLife);
 elStopLife.addEventListener('click', stopLife);
 elClear.addEventListener('click', clearField);
-// elGenBlinker.addEventListener('click', generateBlinker);
+elHelpBtn.addEventListener('click', () => {
+    elHelp.style.visibility = "visible";
+    elHelpClose.style.visibility = "visible";
+});
+elHelpCloseBtn.addEventListener('click', hideHelpTooltip);
+elHelpClose.addEventListener('click', hideHelpTooltip);
 
 //get X and Y from input field, if checking fails - set to defualt values
     function getSize()
     {
-        field.x = O('sizeX').value; // getting X and Y demention from input field. Parsing it to Integer
+        field.x = O('sizeX').value; // getting X and Y dementions from input field. Parsing it to Integer
         field.y = O('sizeY').value;
         field.x = parseInt(field.x) ?  parseInt(field.x) : field.defaultSize; // if cannot parse to integer, set to default value
         field.y = parseInt(field.y) ?  parseInt(field.y) : field.defaultSize;
@@ -46,7 +52,7 @@ elClear.addEventListener('click', clearField);
         return [field.x, field.y]; 
     }
 
-    function generateField() // field generation with input values (size and live percentage)
+    function generateField() // field generation with input values (size and life percentage)
     {
         [x, y] = getSize();  // destructuring function return into x and y
 
@@ -79,7 +85,7 @@ elClear.addEventListener('click', clearField);
         elField = document.getElementById('field');
         elField.innerHTML = generateFieldStr;
         
-        // even listeners for cell state toggling
+        // event listeners for cell state toggling
         deadList = C('dead'); // getting all dead and live cells into an array
         aliveList = C('alive');
 
@@ -96,42 +102,6 @@ elClear.addEventListener('click', clearField);
             deadList[aliveEl].addEventListener('click', toggleCell);
         }
     }
-
-    // DEPRECATED FOR NOW
-    // function generateBlinker() 
-    // {
-    //     clearField();
-
-    //     getSize();
-
-    //     let generateFieldStr = ""; // generation string declaration and purging
-    //     let tempX = x/2; let tempY = y/2;
-
-    //     for (let i=1; i<=y; i++) // cycling generation using our size values
-    //         {
-    //         generateFieldStr += "<tr id='row" + i.toString().padStart(2, 0) + "'>"; // row start and number
-    //         let fieldArrayRow = new Array();
-    //             for (let j=1; j<=x; j++)
-    //             {
-    //                 let id = j.toString().padStart(2, 0) + i.toString().padStart(2, 0); // 14-15 15-14 15-15 15-16 16-15
-
-    //                 // this is a bit wrong with coords. Currently its assumed i is X and j is Y. Got to swap it around
-
-    //                 if (i == tempX - 1 && j == tempY) {generateFieldStr += "<td id='" + id + "' class='alive'></td>"; currentStatus = 'alive';}
-    //                 else if (i == tempX && j == tempY - 1) {generateFieldStr += "<td id='" + id + "' class='alive'></td>"; currentStatus = 'alive';}
-    //                 else if (i == tempX && j == tempY) {generateFieldStr += "<td id='" + id + "' class='alive'></td>"; currentStatus = 'alive';}
-    //                 else if (i == tempX && j == tempY + 1) {generateFieldStr += "<td id='" + id + "' class='alive'></td>"; currentStatus = 'alive';}
-    //                 else if (i == tempX + 1 && j == tempY) {generateFieldStr += "<td id='" + id + "' class='alive'></td>"; currentStatus = 'alive';}
-    //                 else {generateFieldStr += "<td id='" + id + "' class='dead'></td>"; currentStatus = 'dead';}
-    //                 fieldArrayRow.push(currentStatus);
-    //                 //console.log(i + ":" + j + " | " + fieldArrayRow);
-    //             }
-    //         field.array.push(fieldArrayRow);
-    //         generateFieldStr += "</tr>";
-    //         }
-    //     elField = document.getElementById('field');
-    //     elField.innerHTML = generateFieldStr;
-    // }
     
     function seedRandomizer()
     {
@@ -166,6 +136,7 @@ elClear.addEventListener('click', clearField);
             for (let j=0; j<x; j++)
             {
                 // i - row / y, j - column / x. A bit counterintuitive, yeah :) Array first level is rows (y), second -- columsn (x)
+                // matrix coords map
                 // a (j-1) / c (i-1) | j (j  ) / c (i-1) | b (j+1) / c (i-1)
                 // a (j-1) / i (i  ) | j (j  ) / i (i  ) | b (j+1) / i (i  )
                 // a       / d (i+1) | j       / d       | b       / d
@@ -173,10 +144,9 @@ elClear.addEventListener('click', clearField);
                 let a = j-1, b = j+1, c = i-1, d = i+1; //shortcuts
                 if (i === 0) c = y-1; if (i === y-1) d = 0; //if border cells we go to other side of the field
                 if (j === 0) a = x-1; if (j === x-1) b = 0;
-                // console.log("i: " + i + " j: " + j + " a: " + a + " b: " + b + " c: " + c + " d: " + d);
                 let CellNeighbours = [];
                 let ID = (j+1).toString().padStart(2, 0) + (i+1).toString().padStart(2, 0); //determining cell ID
-                let curStatus = field.array[i][j]; //finding current cell status
+                let curStatus = field.array[i][j]; //getting current cell status
                 let aliveCounter = 0;
 
                 CellNeighbours.push(field.array[c][a]); // -1 -1  pushing cell neighbours into separete array
@@ -202,7 +172,6 @@ elClear.addEventListener('click', clearField);
                         O(ID).className = 'dead';
                         fieldArrayClone[i][j] = 'dead';
                         deathCounter++;
-                        //console.log("Id: " + ID + ". Counter: " + aliveCounter + ". alive -> dead");
                     }
                     else {
                        survCounter++;
@@ -213,16 +182,13 @@ elClear.addEventListener('click', clearField);
                     O(ID).className = 'alive';
                     fieldArrayClone[i][j] = 'alive';
                     birthCounter++;
-                    //console.log("Id: " + ID + ". Counter: " + aliveCounter + ". dead -> alive");
                 }
-                //console.log("Id: " + ID + ". Counter: " + aliveCounter);
-
             }
         }
         field.array = fieldArrayClone.map(itemC => itemC.slice()); // writing changed array back into initial array
         genCounter++;
 
-        elGenCounter.textContent = genCounter;
+        elGenCounter.textContent = genCounter; // updating values on screen
         elDeathCounter.textContent = deathCounter;
         elSurvCounter.textContent = survCounter;
         elBirthCounter.textContent = birthCounter;
@@ -237,20 +203,15 @@ elClear.addEventListener('click', clearField);
         x = parseInt(x)-1; // array indexes for current cell
         y = parseInt(y)-1;
 
-        // console.log(this.id + ", x: " + x + ", y: " + y + ", status: " + cellStatus);
-        if (cellStatus === 'dead') // if dead/alive, set to alive/dead: change cell class and modify field.array
+        if (cellStatus === 'dead') // if dead/alive, set to alive/dead. Change cell class and modify field.array
         {
-            // console.log(field.array[y][x] + " before changing");
             this.className = 'alive';
             field.array[y][x] = 'alive';
-            // console.log(field.array[y][x] + " after changing");
-            // console.log("Changed to Alive!")
         }
         else if (cellStatus === 'alive')
         {
             this.className = 'dead';
             field.array[y][x] = 'dead';
-            // console.log("Changed to Dead!")
         }
     }
 
@@ -276,6 +237,13 @@ elClear.addEventListener('click', clearField);
         elDeathCounter.textContent = 0;
         elSurvCounter.textContent = 0;
         elBirthCounter.textContent = 0; // Counters reset
+        stopLife(); // if evo is running, stop it before resetting
         O('randP').value = 0; // quick and dirty way to generate blank field upon resseting
         generateField();
+    }
+
+    function hideHelpTooltip()
+    {
+            elHelp.style.visibility = "hidden";
+            elHelpClose.style.visibility = "hidden";
     }

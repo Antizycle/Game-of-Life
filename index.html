@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IT IS ALIVE!</title>
 <link rel="stylesheet" href="./life.css">
 <script src="./osc.js"></script>
@@ -10,10 +12,11 @@
 
     <div class="content">
         <header class="content__header">
+            <div class="header__help-btn" data-title="About this page">!</div>
             <p>GAME of LIFE rev-03.01!</p>
         </header>
         <nav class="content__nav">
-            <ul class="nav__list nav__list--line">
+            <ul class="nav__list">
                 <li class="nav__item">Width<br>
                     <input type="text" name="sizeX" id="sizeX" maxlength="2" value="30" title="Default value is 10, range 10-99"></li>
                 <li class="nav__item">Height<br>
@@ -23,15 +26,16 @@
                 <li class="nav__item">Evo speed<br>
                     <input type="text" name="evolS" id="evolS" maxlength="4" value="1000" title="(40-2000 ms)"></li>
             </ul>
-            <ul class="nav__list nav__list--line">
+            <div class=" nav__list--line"></div>
+            <ul class="nav__list">
                 <li class="nav__item">
-                    <button name="Generate" id="genField" value="Generate" title="With input values x, y, intial pop">Generate</button>
+                    <button type="submit" name="Generate" id="genField" value="Generate" title="With input values x, y, intial pop">Generate</button>
                 </li>
                 <li class="nav__item">
                     <button name="cycle" id="cycle" value="One Cycle">1 Cycle</button>
                 </li>
                 <li class="nav__item">
-                    <button name="startL" id="start" value="Start Life" title="Affected by speed value">Start Evo</button>
+                    <button name="startL" id="start" value="Start Life" title="affected by speed value">Start Evo</button>
                 </li>
                  <li class="nav__item">
                     <button name="stop" id="stop-life" value="Stop Life">Stop Evo</button>
@@ -40,18 +44,19 @@
                     <button name="Clear" id="clear" value="Clear">Clear</button>
                 </li>
             </ul>
+            <div class=" nav__list--line"></div>
             <ul class="nav__list">
                 <li class="nav__item">
-                    Generation: <span id="gen-counter">0</span>
+                    Generation #: <span id="gen-counter">0</span>
                 </li>
                 <li class="nav__item">
-                    &nbsp;| Deaths: <span id="death-counter">0</span>
+                    Deaths: <span id="death-counter">0</span>
                 </li>
                 <li class="nav__item">
-                    &nbsp;| Survived: <span id="surv-counter">0</span>
+                    Survived: <span id="surv-counter">0</span>
                 </li>
                 <li class="nav__item">
-                   &nbsp;| Ressurected: <span id="birth-counter">0</span>
+                    Ressurected: <span id="birth-counter">0</span>
                 </li>
             </ul>
         </nav>
@@ -65,6 +70,24 @@
             <p>2022-2023 -- by Antizycle</p>
         </footer>
     </div>
+    <div id="help">
+        <span id="help__close-btn" class="header__help-btn">X</span>
+        <p class="help__text">This is an implementation of&nbsp;The&nbsp;Game&nbsp;of&nbsp;Life originaly devised by the British mathematician John Horton Conway
+         in 1970. It&nbsp;is&nbsp;a cellular automaton game which follows simple rules of cell evolution:
+        <ol>
+            <li>Any live cell with two or three live neighbours survives.</li>
+            <li>Any dead cell with three live neighbours becomes a live cell.</li>
+            <li>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</li>
+        </ol>
+        You can set up gaming field by entering size values (10-99 for both dimensions), intial alive perecentage (85-99%, 0 would generate blank field) and evolution speed in miliseconds (40-2000).<br>
+        <b>Generate</b> button generates playing field with chosen values.<br>
+        <b>1 Cycle</b> would perform one evolution cycle.<br>
+        <b>Start Evo</b> - start evolution process with selected speed until <b>Stop Evo</b> button is pressed.<br>
+        <b>Clear</b> button stop evolution (if it is running) and clears field by generating new one with same properties.<br>
+        Also you can manualy toggle cells at any moment.
+        </p>
+    </div>
+    <div id="help__close"></div>
 
 <script src="./life.js"></script>
 </body></html>
