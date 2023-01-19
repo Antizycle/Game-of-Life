@@ -12,7 +12,7 @@
 
     <div class="content">
         <header class="content__header">
-            <div class="header__help-btn" data-title="About this page">!</div>
+            <div class="header__help-btn" id="header__help-btn" data-title="About this page">!</div>
             <p>GAME of LIFE rev-03.01!</p>
         </header>
         <nav class="content__nav">
@@ -22,7 +22,7 @@
                 <li class="nav__item">Height<br>
                     <input type="text" name="sizeY" id="sizeY" maxlength="2" value="30" title="Default value is 10, range 10-99"></li>
                 <li class="nav__item">Population<br>
-                    <input type="text" name="randP" id="randP" maxlength="2" value="85" title="Default value is 90, range 85-99. Input 0 for a blank field"></li>
+                    <input type="text" name="randP" id="randP" maxlength="2" value="15" title="Default value is 10, range 0-15. Input 0 for a blank field"></li>
                 <li class="nav__item">Evo speed<br>
                     <input type="text" name="evolS" id="evolS" maxlength="4" value="1000" title="(40-2000 ms)"></li>
             </ul>
@@ -79,7 +79,7 @@
             <li>Any dead cell with three live neighbours becomes a live cell.</li>
             <li>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</li>
         </ol>
-        You can set up gaming field by entering size values (10-99 for both dimensions), intial alive perecentage (85-99%, 0 would generate blank field) and evolution speed in miliseconds (40-2000).<br>
+        You can set up gaming field by entering size values (10-99 for both dimensions), intial alive perecentage (0-15%, 0 would generate blank field) and evolution speed in miliseconds (40-2000).<br>
         <b>Generate</b> button generates playing field with chosen values.<br>
         <b>1 Cycle</b> would perform one evolution cycle.<br>
         <b>Start Evo</b> - start evolution process with selected speed until <b>Stop Evo</b> button is pressed.<br>

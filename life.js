@@ -5,7 +5,7 @@ let field = {
     defaultSpeed: 100,
     x: 10,
     y: 10,
-    randP: 0.85,
+    randP: 0.15,
     array: [],
     aliveCells: 0
 }
@@ -49,12 +49,25 @@ elHelpClose.addEventListener('click', hideHelpTooltip);
         field.y = parseInt(field.y) ?  parseInt(field.y) : field.defaultSize;
         if (field.x<10 || field.x>99) field.x = field.defaultSize; // if size out of range, setting it to 10x10
         if (field.y<10 || field.y>99) field.y = field.defaultSize;
+
+        O('sizeX').value = field.x; // updating values in the unput fields
+        O('sizeY').value = field.y;
+
         return [field.x, field.y]; 
     }
 
     function generateField() // field generation with input values (size and life percentage)
     {
         [x, y] = getSize();  // destructuring function return into x and y
+
+        // getting value out of the population input and checking it
+        field.randP = O('randP').value;
+        if (field.randP != 0)
+        {
+            parseInt(field.randP) ? field.randP = parseInt(field.randP) : field.randP = 10;
+            if (field.randP<-1 || field.randP>15) field.randP = 10;
+        }
+        O('randP').value = field.randP; // updating value in the input field
 
         isGenerated = 1;
         genCounter = 0; // counter reset
@@ -73,7 +86,7 @@ elHelpClose.addEventListener('click', hideHelpTooltip);
                 for (let j=1; j<=x; j++)
                 {
                     let id = j.toString().padStart(2, 0) + i.toString().padStart(2, 0);
-                    let currentStatus = seedRandomizer();
+                    let currentStatus = seedRandomizer(field.randP);
                     generateFieldStr += "<td id='" + id + "' class='" + currentStatus + "'></td>";
                     fieldArrayRow.push(currentStatus);
                     if(currentStatus === 'alive') field.aliveCells++;
@@ -103,17 +116,14 @@ elHelpClose.addEventListener('click', hideHelpTooltip);
         }
     }
     
-    function seedRandomizer()
+    function seedRandomizer(randPercent)
     {
-        field.randP = O('randP').value;
-        if (field.randP === 0) return 'dead'; // if 0 - generate blank field
+        if (randPercent == 0) return 'dead'; // if 0 - generate blank field
 
-        parseInt(field.randP) ? field.randP = parseInt(field.randP) : field.randP = 90;
-        if (field.randP<84 || field.randP>99) field.randP = 90;
-        field.randP /= 100;
+        randPercent /= 100; // otherwise generate status for a cell
         rndm = Math.random();
-        if (rndm < field.randP) return 'dead';
-        if (rndm >= field.randP) return 'alive';
+        if (rndm < randPercent) return 'alive';
+        if (rndm >= randPercent) return 'dead';
         else return 'dead';
     }
 
@@ -217,17 +227,23 @@ elHelpClose.addEventListener('click', hideHelpTooltip);
 
     function startLife() // start evolution using evoSpeed as cycle interval
     {
-        let evoSpeed = O('evolS').value;
-        evoSpeed = parseInt(evoSpeed) ? parseInt(evoSpeed) : field.defaultSpeed;
-        if (evoSpeed<40 || evoSpeed>2000) evoSpeed = field.defaultSpeed;
+        if(CycleInterval) return;
+        else {
+            let evoSpeed = O('evolS').value;
+            evoSpeed = parseInt(evoSpeed) ? parseInt(evoSpeed) : field.defaultSpeed;
+            if (evoSpeed<40 || evoSpeed>2000) evoSpeed = field.defaultSpeed;
 
-        CycleInterval = setInterval(oneCycle, evoSpeed);
+            CycleInterval = setInterval(oneCycle, evoSpeed);
+        }
     }
 
     function stopLife() // stop evolution
     {
-        clearInterval(CycleInterval); //
-        console.log(genCounter + " [stopped]"); // purely for debug purposes
+        if (CycleInterval) {
+            clearInterval(CycleInterval);
+            CycleInterval = '';
+        }
+        else return;
     }
     
     function clearField()
