@@ -187,7 +187,7 @@ tr, td {
     position: fixed;
     top: 1em;
     margin-left: calc(50% - (var(--helpWidth) / 2));
-    padding: 0.5em;
+    padding: 0.3em;
     width: var(--helpWidth);
     height: fit-content;
     visibility: hidden;

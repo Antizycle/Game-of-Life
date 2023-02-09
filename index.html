@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IT IS ALIVE!</title>
 <link rel="stylesheet" href="./life.css">
-<script src="./osc.js"></script>
 </head>
 <body>
 
     <div class="content">
         <header class="content__header">
             <div class="header__help-btn" id="header__help-btn" data-title="About this page">!</div>
-            <p>GAME of LIFE rev-03.01!</p>
+            <p>GAME of LIFE rev-03.05!</p>
         </header>
         <nav class="content__nav">
             <ul class="nav__list">
@@ -47,13 +46,13 @@
             <div class=" nav__list--line"></div>
             <ul class="nav__list">
                 <li class="nav__item">
-                    Generation #: <span id="gen-counter">0</span>
+                    Generation #: <span id="gen-counter">0</span> |
                 </li>
                 <li class="nav__item">
-                    Deaths: <span id="death-counter">0</span>
+                    Deaths: <span id="death-counter">0</span> |
                 </li>
                 <li class="nav__item">
-                    Survived: <span id="surv-counter">0</span>
+                    Survived: <span id="surv-counter">0</span> |
                 </li>
                 <li class="nav__item">
                     Ressurected: <span id="birth-counter">0</span>
@@ -72,14 +71,16 @@
     </div>
     <div id="help">
         <span id="help__close-btn" class="header__help-btn">X</span>
-        <p class="help__text">This is an implementation of&nbsp;The&nbsp;Game&nbsp;of&nbsp;Life originaly devised by the British mathematician John Horton Conway
-         in 1970. It&nbsp;is&nbsp;a cellular automaton game which follows simple rules of cell evolution:
+        <p class="help__text">This is an implementation of&nbsp;The&nbsp;Game&nbsp;of&nbsp;Life originaly devised 
+         by the British mathematician John Horton Conway in 1970. It&nbsp;is&nbsp;a cellular automaton game which 
+         follows simple rules of cell evolution:
         <ol>
             <li>Any live cell with two or three live neighbours survives.</li>
             <li>Any dead cell with three live neighbours becomes a live cell.</li>
             <li>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</li>
         </ol>
-        You can set up gaming field by entering size values (10-99 for both dimensions), intial alive perecentage (0-15%, 0 would generate blank field) and evolution speed in miliseconds (40-2000).<br>
+        You can set up gaming field by entering size values (10-99 for both dimensions), intial alive perecentage 
+        (0-15%, 0 would generate blank field) and evolution speed in miliseconds (40-2000).<br>
         <b>Generate</b> button generates playing field with chosen values.<br>
         <b>1 Cycle</b> would perform one evolution cycle.<br>
         <b>Start Evo</b> - start evolution process with selected speed until <b>Stop Evo</b> button is pressed.<br>
