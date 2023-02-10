@@ -13,7 +13,7 @@ let isGenerated = 0;
 const elSizeX = document.getElementById('sizeX')
 const elSizeY = document.getElementById('sizeY')
 const elRandP = document.getElementById('randP')
-const elEvolS = document.getElementById('EvolS')
+const elEvolS = document.getElementById('evolS')
 const elGenField = document.getElementById('genField');
 const elCycle = document.getElementById('cycle');
 const elStart = document.getElementById('start');
@@ -172,7 +172,7 @@ function oneCycle() {
                     survCounter++;
                 }
             }
-            else if (curStatus === 'dead' && aliveCounter === 3) {
+            if (curStatus === 'dead' && aliveCounter === 3) {
                 document.getElementById(ID).className = 'alive';
                 fieldArrayClone[row][column] = 'alive';
                 birthCounter++;
