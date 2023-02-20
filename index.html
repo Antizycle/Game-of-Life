@@ -16,31 +16,86 @@
         </header>
         <nav class="content__nav">
             <ul class="nav__list">
-                <li class="nav__item">Width<br>
-                    <input type="text" name="sizeX" id="sizeX" maxlength="2" value="30" title="Default value is 10, range 10-99"></li>
-                <li class="nav__item">Height<br>
-                    <input type="text" name="sizeY" id="sizeY" maxlength="2" value="30" title="Default value is 10, range 10-99"></li>
-                <li class="nav__item">Population<br>
-                    <input type="text" name="randP" id="randP" maxlength="2" value="15" title="Default value is 10, range 0-15. Input 0 for a blank field"></li>
-                <li class="nav__item">Evo speed<br>
-                    <input type="text" name="evolS" id="evolS" maxlength="4" value="1000" title="(40-2000 ms)"></li>
+                <li class="nav__item">
+                    Width<br />
+                    <input type="text" 
+                           name="sizeX" 
+                           id="sizeX" 
+                           maxlength="2" 
+                           value="30" 
+                           title="Default value is 10, range 10-99">
+                </li>
+                <li class="nav__item">
+                    Height<br />
+                    <input type="text" 
+                           name="sizeY" 
+                           id="sizeY" 
+                           maxlength="2" 
+                           value="30" 
+                           title="Default value is 10, range 10-99">
+                </li>
+                <li class="nav__item">
+                    Population<br />
+                    <input type="text" 
+                           name="randP" 
+                           id="randP" 
+                           maxlength="2" 
+                           value="15" 
+                           title="Default value is 10, range 0-15. Input 0 for a blank field">
+                </li>
+                <li class="nav__item">
+                    Evo speed<br />
+                    <input type="text" 
+                           name="evolS" 
+                           id="evolS" 
+                           maxlength="4" 
+                           value="1000" 
+                           title="(40-2000 ms)">
+                </li>
             </ul>
             <div class=" nav__list--line"></div>
             <ul class="nav__list">
                 <li class="nav__item">
-                    <button type="submit" name="Generate" id="genField" value="Generate" title="With input values x, y, intial pop">Generate</button>
+                    <button type="submit" 
+                            name="Generate" 
+                            id="genField" 
+                            value="Generate" 
+                            title="With input values x, y, intial pop">
+                        Generate
+                    </button>
                 </li>
                 <li class="nav__item">
-                    <button name="cycle" id="cycle" value="One Cycle">1 Cycle</button>
+                    <button name="cycle" 
+                            id="cycle" 
+                            value="One Cycle"
+                            disabled="">
+                        1 Cycle
+                </button>
                 </li>
                 <li class="nav__item">
-                    <button name="startL" id="start" value="Start Life" title="affected by speed value">Start Evo</button>
+                    <button name="startL" 
+                            id="start" 
+                            value="Start Life" 
+                            title="affected by speed value"
+                            disabled="">
+                        Start Evo
+                    </button>
                 </li>
                  <li class="nav__item">
-                    <button name="stop" id="stop-life" value="Stop Life">Stop Evo</button>
+                    <button name="stop" 
+                            id="stop-life" 
+                            value="Stop Life"
+                            disabled="">
+                        Stop Evo
+                    </button>
                 </li>
                 <li class="nav__item">
-                    <button name="Clear" id="clear" value="Clear">Clear</button>
+                    <button name="Clear" 
+                            id="clear" 
+                            value="Clear"
+                            disabled="">
+                        Clear
+                    </button>
                 </li>
             </ul>
             <div class=" nav__list--line"></div>

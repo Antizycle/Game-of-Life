@@ -27,6 +27,8 @@ body {
     color: var(--border);
 }
 
+/* header */
+
 .content__header {
     border: 1px solid var(--border);
     border-radius: 5px;
@@ -35,6 +37,8 @@ body {
     text-align: center;
     padding: 0;
 }
+
+/* navigation */
 
 .content__nav {
     border: 1px solid var(--border);
@@ -67,6 +71,7 @@ body {
     background-color: var(--border);
 }
 
+/* buttons */
 input, button {
     background-color: rgb(166, 146, 96);
     color: black;
@@ -86,6 +91,12 @@ input:focus, button:focus {
     background-color: rgb(192, 178, 141);
 }
 
+input:disabled,
+button:disabled {
+    filter: saturate(20%);
+}
+
+/* game field */
 .content__field {
     display: flex;
     border: 1px solid var(--border);
@@ -98,14 +109,6 @@ input:focus, button:focus {
 
 .field__container {
     display: block;
-}
-
-.content__footer {
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 0;
-    text-align: center;
-
 }
 
 #field {
@@ -134,8 +137,18 @@ tr, td {
     width: 5px;
     margin: 0px;
     padding: 0px;
-}  
+}
 
+/* footer */
+.content__footer {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0;
+    text-align: center;
+
+}
+
+/* help button */
 .header__help-btn {
     display: flex;
     position: relative;

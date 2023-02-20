@@ -7,7 +7,8 @@ let field = {
     array: [],
     aliveCells: 0
 }
-let isGenerated = 0;
+let isGenerated = false;
+let isRunning = false;
 
 // DOM handlers
 const elSizeX = document.getElementById('sizeX')
@@ -49,6 +50,31 @@ function validateInput(value, range, defaultValue) {
     return value;
 }
 
+function navDisabling(isGen, isRun) {
+    if (isGen && !isRun) {
+        elSizeX.removeAttribute('disabled');
+        elSizeY.removeAttribute('disabled');
+        elRandP.removeAttribute('disabled');
+        elEvolS.removeAttribute('disabled');
+        elGenField.removeAttribute('disabled');
+        elCycle.removeAttribute('disabled');
+        elStart.removeAttribute('disabled');
+        elClear.removeAttribute('disabled');
+        elStopLife.setAttribute('disabled', '');
+    }
+    if (isGen && isRun) {
+        elSizeX.setAttribute('disabled', '');
+        elSizeY.setAttribute('disabled', '');
+        elRandP.setAttribute('disabled', '');
+        elEvolS.setAttribute('disabled', '');
+        elGenField.setAttribute('disabled', '');
+        elCycle.setAttribute('disabled', '');
+        elStart.setAttribute('disabled', '');
+        elStopLife.removeAttribute('disabled');
+        elClear.removeAttribute('disabled');
+    }
+}
+
 function getSize() {
     field.x = validateInput(elSizeX.value, [10, 99], 30);
     field.y = validateInput(elSizeY.value, [10, 99], 30);
@@ -68,7 +94,7 @@ function generateField() {
     }
     elRandP.value = field.randP; // updating value in the input field
 
-    isGenerated = 1;
+    isGenerated = true;
     genCounter = 0; 
     elGenCounter.textContent = genCounter;
     elDeathCounter.textContent = 0;
@@ -104,6 +130,8 @@ function generateField() {
     let deadListLenght = deadList.length;
     let aliveListLenght = aliveList.length;
 
+    navDisabling(isGenerated, isRunning);
+
     for (let deadEl = 0; deadEl < deadListLenght; deadEl++) {
         deadList[deadEl].addEventListener('click', toggleCell);
     }
@@ -123,7 +151,7 @@ function seedRandomizer(randPercent) {
 }
 
 function oneCycle() {
-    if(isGenerated != 1) {generateField();}
+    if(!isGenerated) {generateField();}
 
     const x = field.x;
     const y = field.y;
@@ -213,6 +241,8 @@ function startLife() // start evolution using evoSpeed as cycle interval
     else {
         let evoSpeed = validateInput(elEvolS.value, [40, 2000], 50);
         CycleInterval = setInterval(oneCycle, evoSpeed);
+        isRunning = true
+        navDisabling(isGenerated, isRunning);
     }
 }
 
@@ -221,6 +251,8 @@ function stopLife() // stop evolution
     if (CycleInterval) {
         clearInterval(CycleInterval);
         CycleInterval = '';
+        isRunning = false;
+        navDisabling(isGenerated, isRunning);
     }
     else return;
 }
